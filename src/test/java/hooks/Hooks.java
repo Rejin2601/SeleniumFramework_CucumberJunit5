@@ -9,6 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 
 
 public class Hooks {
@@ -19,12 +20,12 @@ public class Hooks {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
         testContext.getDriverFactory().getDriver();
     }
 
     @After
-    public void tearDown(Scenario scenario) {
+    public void tearDown(Scenario scenario) throws FileNotFoundException {
         if (scenario.isFailed()) {
             byte[] screenshot = ((TakesScreenshot) testContext.getDriverFactory().getDriver())
                     .getScreenshotAs(OutputType.BYTES);

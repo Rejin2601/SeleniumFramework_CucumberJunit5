@@ -7,11 +7,13 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import pages.LoginPage;
 
+import java.io.FileNotFoundException;
+
 public class LoginSteps {
     private LoginPage loginPage;
     private TestContext testContext;
 
-    public LoginSteps(TestContext testContext){
+    public LoginSteps(TestContext testContext) throws FileNotFoundException {
         this.testContext = testContext;
         loginPage = new LoginPage(testContext.getDriverFactory().getDriver());
     }
